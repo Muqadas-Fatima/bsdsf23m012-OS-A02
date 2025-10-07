@@ -76,6 +76,37 @@ The "down then across" format prints files in columns starting **from top to bot
 * Dynamic detection ensures the output **adapts** to different terminal sizes, improving usability.
 
 ---
+# Report
+
+## 1. Comparison of Vertical ("Down Then Across") and Horizontal ("Across") Printing Logic
+
+The **vertical ("down then across")** printing logic is **more complex** because it requires **pre-calculating** the number of rows, columns, and index mapping to correctly print items column by column.  
+The **horizontal ("across")** logic prints items sequentially, so it needs **little or no pre-calculation**.
+
+**Conclusion:**  
+Vertical mode needs more pre-processing since it rearranges data for column-wise output, while horizontal mode prints directly in sequence.
+
+---
+
+## 2. Strategy for Managing Display Modes (-l, -x, Default)
+
+The program determines the display mode based on **command-line flags**:
+
+| Option | Mode | Function |
+|---------|------|-----------|
+| `-l` | Long listing | `print_long()` |
+| `-x` | Horizontal display | `print_horizontal()` |
+| *default* | Vertical (down-then-across) | `print_vertical()` |
+
+The selection logic is implemented using conditional statements:
+```c
+if (flag_l)
+    print_long();
+else if (flag_x)
+    print_horizontal();
+else
+    print_vertical();
+
 
 
 
