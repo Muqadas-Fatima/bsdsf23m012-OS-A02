@@ -110,4 +110,31 @@ else
 
 
 
+# Report
+
+## 1. Reading Directory Entries Before Sorting
+
+It is necessary to **read all directory entries into memory** before sorting because sorting algorithms, such as `qsort()`, require **random access to the complete dataset**.  
+The program must first collect all filenames or directory entries into an array so that they can be compared and rearranged efficiently.
+
+**Drawbacks:**  
+For directories containing **millions of files**, this approach can:
+- Consume a large amount of **memory (RAM)**.  
+- Lead to **performance degradation** due to swapping or memory exhaustion.  
+- Increase **processing time** and **I/O overhead**.
+
+**Conclusion:**  
+While reading all entries is required for sorting, it becomes inefficient and memory-intensive for extremely large directories.
+
+---
+
+## 2. Purpose and Signature of the Comparison Function in `qsort()`
+
+The **`qsort()`** function in C is a general-purpose sorting function that requires a **user-defined comparison function** to determine the ordering of elements.
+
+**Function signature:**
+```c
+int compare(const void *a, const void *b);
+
+
 
