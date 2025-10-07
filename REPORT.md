@@ -158,3 +158,20 @@ When the terminal receives these sequences, it interprets them as commands inste
 printf("\033[0;32mThis text is green\033[0m\n");
 
 
+# Report
+
+## 1. ANSI Escape Codes and Terminal Colors
+
+**Explanation:**  
+ANSI escape codes are **special character sequences** that control formatting, color, and other text attributes in a terminal.  
+They start with the **Escape character (ASCII 27 or `\033`)**, followed by `[` and one or more parameters that define the style or color.
+
+When the terminal receives these sequences, it interprets them as commands instead of text, changing the display properties such as foreground color, background color, or text style.
+
+**Example – Printing text in green:**
+```c
+printf("\033[0;32mThis text is green\033[0m\n");
+
+
+
+
